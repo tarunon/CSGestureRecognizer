@@ -13,5 +13,5 @@
     NSMutableString *cmd;
 }
 @property (readonly, nonatomic) NSString *command;
-å
+
 @end
