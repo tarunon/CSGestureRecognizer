@@ -20,7 +20,7 @@
     }
     cmd = [NSMutableString stringWithString:@"."];
     startPoint = [[touches anyObject] locationInView:self.view];
-    self.state = UIGestureRecognizerStateBegin;
+    self.state = UIGestureRecognizerStateBegan;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -34,16 +34,16 @@
     CGPoint prevPoint = [[touches anyObject] previousLocationInView:self.view];
     CGFloat x = nowPoint.x - prevPoint.x;
     CGFloat y = nowPoint.y - prevPoint.y;
-    if (fabsf(x) - 5 > fabsf(y)) {
+    if (fabsf(x) - RequireAxisDif > fabsf(y)) {
         x = nowPoint.x - startPoint.x;
-        if (x > 40) {
+        if (x > RequirePointDif) {
             if (![cmd hasSuffix:@"→"]) {
                 [cmd appendString:@"→"];
                 startPoint = nowPoint;
             } else {
                 startPoint.x = nowPoint.x;
             }
-        } else if (x < -40) {
+        } else if (x < -RequirePointDif) {
             if (![cmd hasSuffix:@"←"]) {
                 [cmd appendString:@"←"];
                 startPoint = nowPoint;
@@ -51,16 +51,16 @@
                 startPoint.x = nowPoint.x;
             }
         }
-    } else if (fabsf(x) < fabsf(y) - 5) {
+    } else if (fabsf(x) < fabsf(y) - RequireAxisDif) {
         y = nowPoint.y - startPoint.y;
-        if (y > 40) {
+        if (y > RequirePointDif) {
             if (![cmd hasSuffix:@"↓"]) {
                 [cmd appendString:@"↓"];
                 startPoint = nowPoint;
             } else {
                 startPoint.y = nowPoint.y;
             }
-        } else if (y < -40) {
+        } else if (y < -RequirePointDif) {
             if (![cmd hasSuffix:@"↑"]) {
                 [cmd appendString:@"↑"];
                 startPoint = nowPoint;

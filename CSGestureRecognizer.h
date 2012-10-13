@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BlockGestureRecognizer.h"
+#define RequireAxisDif 5.0f
+#define RequirePointDif 40.0f
+
 @interface CSGestureRecognizer : UIGestureRecognizer{
     CGPoint startPoint;
     NSMutableString *cmd;
 }
+
 @property (readonly, nonatomic) NSString *command;
 
 @end
