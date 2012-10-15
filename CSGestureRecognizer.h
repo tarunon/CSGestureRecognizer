@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BlockGestureRecognizer.h"
+#import <UIKit/UIGestureRecognizerSubclass.h>
 #define RequireAxisDif 5.0f
 #define RequirePointDif 40.0f
 
